@@ -1,4 +1,4 @@
-manifestVersion: 1
+manifestVersion: 1.1
 id: sahilph-nginx-proxy-manager
 name: Nginx Proxy Manager
 tagline: Expose your services easily and securely
@@ -11,17 +11,18 @@ description: >-
   
   ## Features:
   
-  - Beautiful and Secure Admin Interface based on [Tabler](https://tabler.github.io/)
-  
-  - Easily create forwarding domains, redirections, streams and 404 hosts without knowing anything about Nginx
-  
-  - Free SSL using Let's Encrypt or provide your own custom SSL certificates
-  
-  - Access Lists and basic HTTP Authentication for your hosts
-  
-  - Advanced Nginx configuration available for super users
-  
-  - User management, permissions and audit log
+      - Beautiful and Secure Admin Interface based on [Tabler](https://tabler.github.io/)
+      
+      - Easily create forwarding domains, redirections, streams and 404 hosts without knowing anything about Nginx
+      
+      - Free SSL using Let's Encrypt or provide your own custom SSL certificates
+      
+      - Access Lists and basic HTTP Authentication for your hosts
+      
+      - Advanced Nginx configuration available for super users
+      
+      - User management, permissions and audit log
+      
   
   ⚠️ Please take care while exposing apps to the internet.
   
