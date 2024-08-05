@@ -12,7 +12,7 @@ description: >-
   
   Features:
   
-      - Beautiful and Secure Admin Interface based on [Tabler](https://tabler.github.io/)
+      - Beautiful and Secure Admin Interface based on Tabler: https://tabler.github.io/
       
       - Easily create forwarding domains, redirections, streams and 404 hosts without knowing anything about Nginx
       
@@ -27,6 +27,8 @@ description: >-
   
   ⚠️ Please take care while exposing apps to the internet.
   
+  ⚠️ Note: Since Port 80 is used my Umbrel itself, it will not be handled by Nginx Proxy Manager. Hence do not to forward Port 80 from your router. Only forward Port 443. ⚠️
+  
 developer: Jamie Curnow (jc21.com)
 website: https://nginxproxymanager.com/
 submitter: sahilph
@@ -39,7 +41,8 @@ gallery:
   - https://nginxproxymanager.com/screenshots/proxy-hosts.png
   - https://nginxproxymanager.com/screenshots/proxy-hosts-add.png
 releaseNotes: >-
-  Nginx Proxy Manager Updated to [2.11.3](https://github.com/NginxProxyManager/nginx-proxy-manager/releases/tag/v2.11.3).
+  Nginx Proxy Manager Updated to [2.11.3]
+  More Info: https://github.com/NginxProxyManager/nginx-proxy-manager/releases/tag/v2.11.3.
 dependencies: []
 path: ""
 defaultUsername: "admin@example.com"
