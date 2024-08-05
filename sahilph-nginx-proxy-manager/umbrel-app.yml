@@ -1,4 +1,4 @@
-manifestVersion: 1.1
+manifestVersion: 1
 id: sahilph-nginx-proxy-manager
 name: Nginx Proxy Manager
 tagline: Expose your services easily and securely
@@ -9,7 +9,8 @@ port: 81
 description: >-
   Expose your services easily and securely
   
-  ## Features:
+  
+  Features:
   
       - Beautiful and Secure Admin Interface based on [Tabler](https://tabler.github.io/)
       
