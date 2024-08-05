@@ -28,9 +28,9 @@ description: >-
 developer: Jamie Curnow (jc21.com)
 website: https://nginxproxymanager.com/
 submitter: sahilph
-submission: https://github.com/getumbrel/umbrel-hello-world-app
-repo: https://github.com/getumbrel/umbrel-hello-world-app
-support: https://github.com/getumbrel/umbrel-hello-world-app/issues
+submission: https://github.com/sahilph/sahil-umbrel-apps/tree/sahilph-nginx-proxy-manager
+repo: https://github.com/sahilph/sahil-umbrel-apps/
+support: https://github.com/sahilph/sahil-umbrel-apps//issues
 gallery:
   - https://nginxproxymanager.com/screenshots/login.png
   - https://nginxproxymanager.com/screenshots/dashboard.png
