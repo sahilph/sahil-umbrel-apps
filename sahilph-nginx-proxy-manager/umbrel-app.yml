@@ -31,7 +31,6 @@ submitter: sahilph
 submission: https://github.com/sahilph/sahil-umbrel-apps/tree/sahilph-nginx-proxy-manager
 repo: https://github.com/sahilph/sahil-umbrel-apps/
 support: https://github.com/sahilph/sahil-umbrel-apps//issues
-port: 81
 gallery:
   - https://nginxproxymanager.com/screenshots/login.png
   - https://nginxproxymanager.com/screenshots/dashboard.png
