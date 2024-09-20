@@ -7,7 +7,7 @@ services:
       APP_PORT: 3006
 
   app:
-    image: sahilph/umbrel-fulcrum:convert-to-fulcrum-@sha256:86c0ce0a384d4d2617282611a5e72129a0c03acc6e8576a68b3b6f920b9c7869
+    image: sahilph/umbrel-fulcrum:convert-to-fulcrum
     depends_on:
       - fulcrum
     restart: on-failure
