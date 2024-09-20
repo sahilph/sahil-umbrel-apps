@@ -29,7 +29,7 @@ dependencies:
   - bitcoin
 repo: https://github.com/cculianu/Fulcrum
 support: https://github.com/cculianu/Fulcrum/issues
-port: 2102
+port: 2104
 gallery:
   - https://opengraph.githubassets.com/66b74f7ccbe9e790656155ee94fb530a92f16334b654ce2323534fc7f790743a/cculianu/Fulcrum
 path: ""
