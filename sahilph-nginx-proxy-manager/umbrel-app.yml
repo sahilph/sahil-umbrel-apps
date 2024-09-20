@@ -27,7 +27,7 @@ description: >-
   
   ⚠️ Please take care while exposing apps to the internet.
   
-  ⚠️ Note: Since Port 80 is used my Umbrel itself, it will not be handled by Nginx Proxy Manager. Hence do not to forward Port 80 from your router. Only forward Port 443. ⚠️
+  ⚠️ Note: This app listen on ports 40080 and 40443. In order to make the apps proxied by NPM accessible from internet, users need to port forward 80 to 40080 and 443 to 40443 on their router. ⚠️
   
 developer: Jamie Curnow (jc21.com)
 website: https://nginxproxymanager.com/
