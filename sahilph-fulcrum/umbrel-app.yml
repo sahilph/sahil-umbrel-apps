@@ -6,7 +6,6 @@ version: "1.11.1"
 tagline: A fast & nimble SPV server, drop-in replacement for Electrs/ElectronX/ElectrumX
 icon: https://svgshare.com/i/1Acv.svg
 description: >-
-  ⚠️ Note: This app is a drop-in replacement for Umbrel's Electrs and will not start if Electrs is already running. You will need to stop/uninstall Electrs for this app to start  ⚠️
   
   Run your personal Electrum server and connect your Electrum-compatible wallet,
   including BitBoxApp, BlueWallet, Electrum Wallet (Android and Desktop), Nunchuk 
@@ -22,6 +21,8 @@ description: >-
     - Fast: Written in 100% modern C++20 using multi-threaded and asynchronous programming techniques.
     
     - A drop-in replacement for ElectronX/ElectrumX: Fulcrum is 100% protocol-level compatible with the Electrum Cash 1.5.3 protocol (https://electrum-cash-protocol.readthedocs.io/en/latest/). Existing server admins should feel right at home with this software since installation and management of it is nearly identical to ElectronX/ElectrumX server.
+    
+      ⚠️ Note: Fulcrum does not yet automatically integrate with other apps in the Bitcoin ecosystem on Umbrel. However, in a future umbrelOS update, users will be able to choose which Electrum Server app they want to use to connect with other apps. ⚠️
 
 developer: Calin Culianu
 website: https://fulcrumserver.org/
