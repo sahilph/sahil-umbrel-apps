@@ -7,7 +7,7 @@ services:
       APP_PORT: 3006
 
   app:
-    image: sahilph/umbrel-fulcrum:convert-to-fulcrum
+    image: docker pull ghcr.io/sahilph/umbrel-fulcrum:convert-to-fulcrum
     depends_on:
       - fulcrum
     restart: on-failure
