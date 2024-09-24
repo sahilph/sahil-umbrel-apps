@@ -26,7 +26,7 @@ description: >-
     - Access Lists and basic HTTP Authentication for your hosts
     - Advanced Nginx configuration available for super users
     - User management, permissions and audit log  
-  developer: Jamie Curnow
+developer: Jamie Curnow
 website: https://nginxproxymanager.com/
 submitter: Sahil Phule
 submission: https://github.com/sahilph/sahil-umbrel-apps/tree/sahilph-nginx-proxy-manager
