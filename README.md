@@ -2,7 +2,8 @@
 
 ### Apps List:
 
-1. Nginx Proxy Manager. [[Guide](https://github.com/sahilph/sahil-umbrel-apps/wiki/How-to-use-Nginx-Proxy-Manager-on-your-Umbrel)]
+1. Fulcrum
+2. Nginx Proxy Manager. [[Guide](https://github.com/sahilph/sahil-umbrel-apps/wiki/How-to-use-Nginx-Proxy-Manager-on-your-Umbrel)]
 
 
 ## How to use:
