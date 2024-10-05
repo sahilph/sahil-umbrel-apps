@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Get the required variables
+MYDIR="$(dirname "$(readlink -f "$0")")"
+. "${MYDIR}/common-vars"
+
+
+
+# Restore Backup
+# This will Restore the original scripts from backup
+
+# Check if the original file has been modified
+# This handles the case where the files have been modified by some other action, like Umbrel OS update
+# Only restore if any of the files are modified by this app
+if grep -q  "${MODDED_APP_PROXY_DOCKER_IMAGE}"  "${ORIGINAL_APP_PROXY_DOCKER_COMPOSE_PATH}" ||  grep -q  "${MODDED_APP_AUTH_DOCKER_IMAGE}" "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}" || grep -q "${MODDED_APP_PROXY_DOCKER_IMAGE}" "${ORIGINAL_APP_TS_PATH}" ; then
+	
+	cp -a "${BACKUPS_LEGACY_COMPAT_DIR}/*" "${DOCKER_COMPOSE_DIR}/"
+	cp -a "${BACKUP_APP_TS_PATH}" "${ORIGINAL_APP_TS_PATH}"
+	
+fi  
+
+## Delete the contents in the backup directory since we are uninstalling/updating
+rm "${BACKUPS_ROOT_DIR}/*.yml"

@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: sahilph-umbrel-HTTPSizer_app_1
+      APP_PORT: 3000
+
+  app:
+    image: ghcr.io/sahilph/umbrel-httpsizer:sha-ed2d140
+    hostname: sahilph-umbrel-HTTPSizer_app_1
+    restart: on-failure
+    volumes:
+      - "${APP_DATA_DIR}/data/app:/app-data"
+      - "${UMBREL_ROOT}/secrets/ssl:/ssl:ro"
+
+  caddy:
+    image: caddy:2.8.4-alpine@sha256:33937b9d51461ea87794350c1c09ce53f327802508929d78f3b5642533f2f7db
+    user: "1000:1000"
+    restart: on-failure
+    depends_on:
+      - app
+    ports:
+      - "443:8443"
+    volumes:
+      - "${APP_DATA_DIR}/data/caddy/Caddyfile:/etc/caddy/Caddyfile"
+      - "${APP_DATA_DIR}/data/caddy/data:/data"
+      - "${UMBREL_ROOT}/secrets/ssl:/ssl:ro"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

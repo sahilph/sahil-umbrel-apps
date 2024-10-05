@@ -1,0 +1,27 @@
+manifestVersion: 1.1
+id: sahilph-umbrel-HTTPSizer
+category: networking
+name: Umbrel HTTPSizer
+version: "0.0.0"
+tagline: Secure your umbrel in you local network
+icon: ""
+description: >-
+  
+  Secure your umbrel in you local network
+  
+  
+    
+   ⚠️ Note: This app modifies Umbrel's core file. Please use wuth caution. ⚠️
+
+developer: Sahil Phule
+website:  https://github.com/sahilph/umbrel-HTTPSizer
+submitter: Sahil Phule
+submission: ""
+repo: https://github.com/sahilph/umbrel-HTTPSizer
+support: https://github.com/sahilph/umbrel-HTTPSizer/issues
+port: 6789
+gallery:
+  - ""
+path: ""
+defaultPassword: ""
+releaseNotes: ""

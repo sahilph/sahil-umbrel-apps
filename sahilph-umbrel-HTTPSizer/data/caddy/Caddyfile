@@ -1,0 +1,7 @@
+
+:8443 {
+	log
+    tls /ssl/ssl.cert /ssl/ssl.key
+    reverse_proxy http://host.docker.internal
+    # respond "Hello, world!"
+}

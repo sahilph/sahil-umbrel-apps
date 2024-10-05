@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Get current directory
+MYDIR="$(dirname "$(readlink -f "$0")")"
+
+# Run the uninstall script as the same actions need to be performed for updating
+"${MYDIR}/pre-uninstall"
