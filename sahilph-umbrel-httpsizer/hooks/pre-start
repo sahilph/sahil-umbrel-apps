@@ -16,8 +16,9 @@ fi
 if [[ ! -f "${SSL_CERT_PATH}" && ! -f "${SSL_KEY_PATH}" ]]; then
     openssl req -x509 -newkey rsa:4096 -keyout "$SSL_KEY_PATH" -out "$SSL_CERT_PATH" -sha256 -days 3650 -nodes -subj "/CN=$CERT_CN" -addext "subjectAltName=DNS:*,DNS:$CERT_CN"
 fi
-chown 1000:0 "${SSL_DIR}/ssl.*"
-chmod 640 "${SSL_DIR}/ssl.key"
+chown 1000:0 "${SSL_CERT_PATH}"
+chown 1000:0 "${SSL_KEY_PATH}"
+chmod 640 "${SSL_KEY_PATH}"
 
 
 # Backup and modify the scripts/files
