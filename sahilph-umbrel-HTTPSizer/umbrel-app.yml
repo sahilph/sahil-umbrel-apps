@@ -1,5 +1,5 @@
 manifestVersion: 1.1
-id: sahilph-umbrel-HTTPSizer
+id: sahilph-umbrel-httpsizer
 category: networking
 name: Umbrel HTTPSizer
 version: "0.0.1"
