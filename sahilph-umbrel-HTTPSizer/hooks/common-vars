@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Common Variables used for the scripts
+
+# SSL Related Variables
+SSL_DIR="${UMBREL_ROOT}/secrets/ssl"
+
+SSL_KEY_PATH="${SSL_DIR}/ssl.key"
+SSL_CERT_PATH="${SSL_DIR}/ssl.cert"
+CERT_CN="${DEVICE_DOMAIN_NAME:-umbrel.local}"
+
+
+# Backup Restore Related Variables
+## Docker images
+ORIGINAL_APP_PROXY_DOCKER_IMAGE="getumbrel/app-proxy:1.0.0@sha256:49eb600c4667c4b948055e33171b42a509b7e0894a77e0ca40df8284c77b52fb"
+ORIGINAL_APP_AUTH_DOCKER_IMAGE="getumbrel/auth-server:1.0.5@sha256:b4a4b37896911a85fb74fa159e010129abd9dff751a40ef82f724ae066db3c2a"
+
+MODDED_APP_PROXY_DOCKER_IMAGE="ghcr.io/sahilph/umbrel-app-proxy:sha-ed2d140@sha256:7138f75c1992884fc7556d73db0b3983ad80c0d3099b0499ae24874206ee4117"
+MODDED_APP_AUTH_DOCKER_IMAGE="ghcr.io/sahilph/umbrel-auth-server:sha-ed2d140@sha256:f884b26df5fa1fa6989ae5ec42af505628137f07751a01464d6cc20570dc98c5"
+
+## Backup Dirs
+
+BACKUPS_ROOT_DIR="${APP_DATA_DIR}/data/backups"
+BACKUPS_APPS_DIR="${BACKUPS_ROOT_DIR}/apps"
+BACKUPS_LEGACY_COMPAT_DIR="${BACKUPS_APPS_DIR}/legacy-compat"
+#BACKUPS_SERVER_DIR="${BACKUPS_ROOT_DIR}/server"
+#MODDED_FILES_DIR="${APP_DATA_DIR}/data/modded-files"
+DOCKER_COMPOSE_DIR="${SCRIPT_DOCKER_FRAGMENTS:-/usr/local/lib/node_modules/umbreld/source/modules/apps/legacy-compat}"
+
+# Backup and Modify app-proxy: Docker Compose File
+APP_PROXY_DOCKER_COMPOSE_FILE="docker-compose.app_proxy.yml"
+ORIGINAL_APP_PROXY_DOCKER_COMPOSE_PATH="${DOCKER_COMPOSE_DIR}/${APP_PROXY_DOCKER_COMPOSE_FILE}"
+BACKUP_APP_PROXY_DOCKER_COMPOSE_PATH="${BACKUPS_LEGACY_COMPAT_DIR}/${APP_PROXY_DOCKER_COMPOSE_FILE}"
+
+# Backup and Modify app-proxy: app.ts File
+APP_TS_FILE="app.ts"
+ORIGINAL_APP_TS_PATH="${DOCKER_COMPOSE_DIR}/../${APP_TS_FILE}"
+BACKUP_APP_TS_PATH="${BACKUPS_APPS_DIR}/${APP_TS_FILE}"
+
+# Backup and Modify app-auth: Docker Compose File
+APP_AUTH_DOCKER_COMPOSE_FILE="docker-compose.yml"
+ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH="${DOCKER_COMPOSE_DIR}/${APP_AUTH_DOCKER_COMPOSE_FILE}"
+BACKUP_APP_AUTH_DOCKER_COMPOSE_PATH="${BACKUPS_LEGACY_COMPAT_DIR}/${APP_AUTH_DOCKER_COMPOSE_FILE}"
