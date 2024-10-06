@@ -36,9 +36,9 @@ chmod 640 "${SSL_KEY_PATH}"
 if [[ ! -d "${BACKUPS_LEGACY_COMPAT_DIR}" ]]; then
         mkdir -p "${BACKUPS_LEGACY_COMPAT_DIR}"
 fi
-#if [[ ! -d "${BACKUPS_SERVER_DIR}" ]]; then
-#        mkdir -p "${BACKUPS_SERVER_DIR}"
-#fi
+if [[ ! -d "${BACKUPS_SERVER_DIR}" ]]; then
+        mkdir -p "${BACKUPS_SERVER_DIR}"
+fi
 
 # Backup and Modify app-proxy: Docker Compose File
 
@@ -61,4 +61,16 @@ if [[ ! -f "${BACKUP_APP_AUTH_DOCKER_COMPOSE_PATH}" ]]; then
   cp -a "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}" "${BACKUP_APP_AUTH_DOCKER_COMPOSE_PATH}"
   sed -i "s|${ORIGINAL_APP_AUTH_DOCKER_IMAGE}|${MODDED_APP_AUTH_DOCKER_IMAGE}|g" "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}"
   sed -i -z 's|volumes:|volumes:\n      - "${UMBREL_DATA_DIR}/secrets/ssl:/ssl:ro"|2' "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}"
+fi
+
+
+# Backup and Modify app-proxy: server/index.ts File
+if [[ ! -f "${BACKUP_SERVER_INDEX_TS_PATH}" ]]; then
+  cp -a "${ORGINAL_SERVER_INDEX_TS_PATH}" "${BACKUP_SERVER_INDEX_TS_PATH}"
+  
+  # Allow upgrading insecure requests
+  sed -i 's|upgradeInsecureRequests: null|upgradeInsecureRequests: \[\]|' "${ORGINAL_SERVER_INDEX_TS_PATH}"
+  
+  # Allow the http version of the hostname in CSP 
+  sed -i "s|connectSrc: \[\"'self'\", 'https://apps.umbrel.com'\]|connectSrc: \['http://${CERT_CN}', \"'self'\", 'https://apps.umbrel.com'\]|" "${ORGINAL_SERVER_INDEX_TS_PATH}"
 fi
