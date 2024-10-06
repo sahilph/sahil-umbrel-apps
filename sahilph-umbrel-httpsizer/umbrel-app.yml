@@ -20,8 +20,6 @@ description: >-
   ⚠️ Note: This app is in beta phase. It modifies Umbrel's core files. Please use with caution. Going back to the non-HTTP version is not yet possible via GUI.  ⚠️
   
   ⚠️ Note 2: Do not use this app to expose your Umbrel device to the Internet. This is only for securing Umbrel in your local network. ⚠️
-
-
 developer: Sahil Phule
 website:  https://github.com/sahilph/umbrel-HTTPSizer
 submitter: Sahil Phule
@@ -36,7 +34,6 @@ gallery:
 releaseNotes: >-
   [v0.0.1]
   Initial version
-  
 path: ""
 defaultPassword: ""
 releaseNotes: ""
