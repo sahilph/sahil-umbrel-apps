@@ -17,8 +17,11 @@ if grep -q  "${MODDED_APP_PROXY_DOCKER_IMAGE}"  "${ORIGINAL_APP_PROXY_DOCKER_COM
 	
 	cp -a "${BACKUPS_LEGACY_COMPAT_DIR}/*" "${DOCKER_COMPOSE_DIR}/"
 	cp -a "${BACKUP_APP_TS_PATH}" "${ORIGINAL_APP_TS_PATH}"
+	cp -a "${BACKUP_SERVER_INDEX_TS_PATH}" "${ORGINAL_SERVER_INDEX_TS_PATH}"
 	
 fi  
 
 ## Delete the contents in the backup directory since we are uninstalling/updating
-rm "${BACKUPS_ROOT_DIR}/*.yml"
+rm "${BACKUPS_LEGACY_COMPAT_DIR}/*.yml"
+rm "${BACKUP_APP_TS_PATH}"
+rm "${BACKUP_SERVER_INDEX_TS_PATH}"
