@@ -19,7 +19,7 @@ if [[ ! -f "${SSL_CERT_PATH}" && ! -f "${SSL_KEY_PATH}" ]]; then
 	
 	openssl req -nodes -newkey rsa:4096 -keyout "$SSL_KEY_PATH" -out "$SSL_CSR_PATH" -subj "/C=US/ST=CA/L=Earth/O=Umbrel Local/CN=$CERT_CN"
 	
-	openssl x509 -req -CA "$SSL_ROOT_CA_CERT_PATH" -CAkey "SSL_ROOT_CA_KEY_PATH" -in "$SSL_CSR_PATH" -out "SSL_CERT_PATH" -days 3650  -CAcreateserial -extfile <(printf "subjectAltName = DNS:*, DNS:$CERT_CN, DNS:localhost\nauthorityKeyIdentifier = keyid,issuer\nbasicConstraints = CA:FALSE\nkeyUsage = digitalSignature, keyEncipherment\nextendedKeyUsage=serverAuth")
+	openssl x509 -req -CA "$SSL_ROOT_CA_CERT_PATH" -CAkey "$SSL_ROOT_CA_KEY_PATH" -in "$SSL_CSR_PATH" -out "$SSL_CERT_PATH" -days 3650  -CAcreateserial -extfile <(printf "subjectAltName = DNS:*, DNS:$CERT_CN, DNS:localhost\nauthorityKeyIdentifier = keyid,issuer\nbasicConstraints = CA:FALSE\nkeyUsage = digitalSignature, keyEncipherment\nextendedKeyUsage=serverAuth")
 	
 fi
 chown 1000:0 "${SSL_CERT_PATH}"
