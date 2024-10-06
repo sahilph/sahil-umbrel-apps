@@ -23,7 +23,7 @@ MODDED_APP_AUTH_DOCKER_IMAGE="ghcr.io/sahilph/umbrel-auth-server:sha-ed2d140@sha
 
 ## Backup Dirs
 
-BACKUPS_ROOT_DIR="${APP_DATA_DIR}/data/backups"
+BACKUPS_ROOT_DIR="${UMBREL_ROOT}/data/umbrel-httpsizer-backups"
 BACKUPS_APPS_DIR="${BACKUPS_ROOT_DIR}/apps"
 BACKUPS_LEGACY_COMPAT_DIR="${BACKUPS_APPS_DIR}/legacy-compat"
 BACKUPS_SERVER_DIR="${BACKUPS_ROOT_DIR}/server"
