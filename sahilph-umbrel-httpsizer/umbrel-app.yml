@@ -4,14 +4,23 @@ category: networking
 name: Umbrel HTTPSizer
 version: "0.0.1"
 tagline: Secure your umbrel in you local network
-icon: https://svgshare.com/i/1BAe.svg
+icon: https://svgshare.com/i/1BAu.svg
 description: >-
   
   Secure your umbrel in you local network.
   
+  After Installation, a "First Run" page will be displayed with instructions on what to do next. It also has instructions on how to trust the generated root CA cerificate so that you will not get errors on your browser.
   
+  🔍 How it works?
+  
+    1. After installation, the app generates self-signed certificates on your device.
+    2. It then modifies Umbrel's certain core files, and uses modified docker images for the app-proxy and app-auth services, which allows them to listen for HTTPS requests.
+    3. It also creates backup of the orginal files, just in case...!!!
     
-   ⚠️ Note: This app modifies Umbrel's core files. Please use with caution. ⚠️
+  ⚠️ Note: This app is in beta phase. It modifies Umbrel's core files. Please use with caution. Going back to the non-HTTP version is not yet possible via GUI.  ⚠️
+  
+  ⚠️ Note 2: Do not use this app to expose your Umbrel device to the Internet. This is only for securing Umbrel in your local network. ⚠️
+
 
 developer: Sahil Phule
 website:  https://github.com/sahilph/umbrel-HTTPSizer
@@ -21,7 +30,13 @@ repo: https://github.com/sahilph/umbrel-HTTPSizer
 support: https://github.com/sahilph/umbrel-HTTPSizer/issues
 port: 6789
 gallery:
-  - "https://github.com/user-attachments/assets/d0906e77-fdab-42a0-9e2b-f339be9d48c0"
+  - https://i.imgur.com/WBbDIJy.png
+  - https://i.imgur.com/KzA3e6r.png
+  - https://i.imgur.com/pPLE5Kk.png
+releaseNotes: >-
+  [v0.0.1]
+  Initial version
+  
 path: ""
 defaultPassword: ""
 releaseNotes: ""
