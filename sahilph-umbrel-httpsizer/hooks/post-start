@@ -14,7 +14,13 @@ fi
 # Check if SSL certificates exist, if not create
 
 if [[ ! -f "${SSL_CERT_PATH}" && ! -f "${SSL_KEY_PATH}" ]]; then
-    openssl req -x509 -newkey rsa:4096 -keyout "$SSL_KEY_PATH" -out "$SSL_CERT_PATH" -sha256 -days 3650 -nodes -subj "/CN=$CERT_CN" -addext "subjectAltName=DNS:*,DNS:$CERT_CN"
+	
+	openssl req -x509 -nodes -newkey RSA:4096 -keyout "$SSL_ROOT_CA_KEY_PATH" -days 3650   -out "$SSL_ROOT_CA_CERT_PATH" -subj "/C=US/ST=CA/L=Earth/O=Umbrel Local/CN=root_CA_for_$CERT_CN"
+	
+	openssl req -nodes -newkey rsa:4096 -keyout "$SSL_KEY_PATH" -out "$SSL_CSR_PATH" -subj "/C=US/ST=CA/L=Earth/O=Umbrel Local/CN=$CERT_CN"
+	
+	openssl x509 -req -CA "$SSL_ROOT_CA_CERT_PATH" -CAkey "SSL_ROOT_CA_KEY_PATH" -in "$SSL_CSR_PATH" -out "SSL_CERT_PATH" -days 3650  -CAcreateserial -extfile <(printf "subjectAltName = DNS:*, DNS:$CERT_CN, DNS:localhost\nauthorityKeyIdentifier = keyid,issuer\nbasicConstraints = CA:FALSE\nkeyUsage = digitalSignature, keyEncipherment\nextendedKeyUsage=serverAuth")
+	
 fi
 chown 1000:0 "${SSL_CERT_PATH}"
 chown 1000:0 "${SSL_KEY_PATH}"
