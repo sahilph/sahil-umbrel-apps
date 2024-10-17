@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: sahilph-umbrel-httpsizer
 category: networking
 name: Umbrel HTTPSizer
-version: "0.0.1"
+version: "0.0.2"
 tagline: Secure your umbrel in you local network
 icon: https://svgshare.com/i/1BAu.svg
 description: >-
@@ -32,7 +32,10 @@ gallery:
   - https://i.imgur.com/KzA3e6r.png
   - https://i.imgur.com/pPLE5Kk.png
 releaseNotes: >-
-  v0.0.1
-  Initial version
+  v0.0.2
+  1. Add Tailscale Hostname in the Certificate
+  2. Fix Websocket over SSL Issues.
+  
+  ⚠️ Note: you will need to manually restart your umbrel after update.  ⚠️
 path: ""
 defaultPassword: ""

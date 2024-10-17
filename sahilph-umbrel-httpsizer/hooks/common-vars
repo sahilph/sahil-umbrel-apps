@@ -19,8 +19,8 @@ TAILSCALE_HOSTNAME="umbrel"
 ORIGINAL_APP_PROXY_DOCKER_IMAGE="getumbrel/app-proxy:1.0.0@sha256:49eb600c4667c4b948055e33171b42a509b7e0894a77e0ca40df8284c77b52fb"
 ORIGINAL_APP_AUTH_DOCKER_IMAGE="getumbrel/auth-server:1.0.5@sha256:b4a4b37896911a85fb74fa159e010129abd9dff751a40ef82f724ae066db3c2a"
 
-MODDED_APP_PROXY_DOCKER_IMAGE="ghcr.io/sahilph/umbrel-app-proxy:0.0.1@sha256:bbbbc8bc465fb067acc109e923d68584455e5d85558906275fdbf65df15e0dd4"
-MODDED_APP_AUTH_DOCKER_IMAGE="ghcr.io/sahilph/umbrel-auth-server:0.0.1@sha256:24bc56481b1da41049e740f793595787afa8432f4a5032549c0712abfeeae64f"
+MODDED_APP_PROXY_DOCKER_IMAGE="ghcr.io/sahilph/umbrel-app-proxy:0.0.2@sha256:aacf861abfaae5e711a3331d41d3b0c4cf06f4f2b1ad3efed11dd27bee88bda7"
+MODDED_APP_AUTH_DOCKER_IMAGE="ghcr.io/sahilph/umbrel-auth-server:0.0.2@sha256:7d7596046e1c604358f437ec8803b675c78e85b2fe8eb9de14a9b986e228120f"
 
 ## Backup Dirs
 

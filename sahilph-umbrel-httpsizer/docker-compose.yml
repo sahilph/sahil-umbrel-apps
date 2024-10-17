@@ -7,7 +7,7 @@ services:
       APP_PORT: 3000
 
   app:
-    image: ghcr.io/sahilph/umbrel-httpsizer:0.0.1@sha256:4c259e826318173e8ad920534f9ed662ad9e01626ef9d7c815696e053df4e8db
+    image: ghcr.io/sahilph/umbrel-httpsizer:0.0.2@sha256:d40e791ab4b9548495ce7da6898e4f3915ccde2205a899561a431df9c623b113
     hostname: sahilph-umbrel-httpsizer_app_1
     restart: on-failure
     volumes:
