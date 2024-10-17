@@ -49,8 +49,8 @@ fi
 
 if [[ ! -f "${BACKUP_APP_PROXY_DOCKER_COMPOSE_PATH}" ]]; then
   cp -a "${ORIGINAL_APP_PROXY_DOCKER_COMPOSE_PATH}" "${BACKUP_APP_PROXY_DOCKER_COMPOSE_PATH}"
-  sed -i "s|${ORIGINAL_APP_PROXY_DOCKER_IMAGE}|${MODDED_APP_PROXY_DOCKER_IMAGE}|g" "${ORIGINAL_APP_PROXY_DOCKER_COMPOSE_PATH}"
-  sed -i 's|volumes:|volumes:\n      - "${UMBREL_ROOT}/secrets/ssl:/ssl:ro"|' "${ORIGINAL_APP_PROXY_DOCKER_COMPOSE_PATH}"
+  yq -i ".services.app_proxy.image = \"${MODDED_APP_PROXY_DOCKER_IMAGE}\"" "${ORIGINAL_APP_PROXY_DOCKER_COMPOSE_PATH}"
+  yq -i '.services.app_proxy.volumes += "${UMBREL_ROOT}/secrets/ssl:/ssl:ro"' "${ORIGINAL_APP_PROXY_DOCKER_COMPOSE_PATH}"
 fi
 
 # Backup and Modify app-proxy: app.ts File
@@ -64,8 +64,8 @@ fi
 
 if [[ ! -f "${BACKUP_APP_AUTH_DOCKER_COMPOSE_PATH}" ]]; then
   cp -a "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}" "${BACKUP_APP_AUTH_DOCKER_COMPOSE_PATH}"
-  sed -i "s|${ORIGINAL_APP_AUTH_DOCKER_IMAGE}|${MODDED_APP_AUTH_DOCKER_IMAGE}|g" "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}"
-  sed -i -z 's|volumes:|volumes:\n      - "${UMBREL_DATA_DIR}/secrets/ssl:/ssl:ro"|2' "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}"
+  yq -i ".services.auth.image = \"${MODDED_APP_AUTH_DOCKER_IMAGE}\"" "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}"
+  yq -i '.services.auth.volumes += "${UMBREL_DATA_DIR}/secrets/ssl:/ssl:ro"' "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}"
 fi
 
 
