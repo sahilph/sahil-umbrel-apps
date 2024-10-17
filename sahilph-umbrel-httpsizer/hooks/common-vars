@@ -11,6 +11,7 @@ SSL_CSR_PATH="${SSL_DIR}/ssl.csr"
 SSL_ROOT_CA_KEY_PATH="${SSL_DIR}/root-ca.key"
 SSL_ROOT_CA_CERT_PATH="${SSL_DIR}/root-ca.crt"
 CERT_CN="${DEVICE_DOMAIN_NAME:-umbrel.local}"
+TAILSCALE_HOSTNAME="umbrel"
 
 
 # Backup Restore Related Variables

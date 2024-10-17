@@ -19,8 +19,13 @@ if [[ ! -f "${SSL_CERT_PATH}" && ! -f "${SSL_KEY_PATH}" ]]; then
 	
 	openssl req -nodes -newkey rsa:4096 -keyout "$SSL_KEY_PATH" -out "$SSL_CSR_PATH" -subj "/C=US/ST=CA/L=Earth/O=Umbrel Local/CN=$CERT_CN"
 	
-	openssl x509 -req -CA "$SSL_ROOT_CA_CERT_PATH" -CAkey "$SSL_ROOT_CA_KEY_PATH" -in "$SSL_CSR_PATH" -out "$SSL_CERT_PATH" -days 3650  -CAcreateserial -extfile <(printf "subjectAltName = DNS:*, DNS:$CERT_CN, DNS:localhost\nauthorityKeyIdentifier = keyid,issuer\nbasicConstraints = CA:FALSE\nkeyUsage = digitalSignature, keyEncipherment\nextendedKeyUsage=serverAuth")
-	
+	openssl x509 -req -CA "$SSL_ROOT_CA_CERT_PATH" -CAkey "$SSL_ROOT_CA_KEY_PATH" -in "$SSL_CSR_PATH" -out "$SSL_CERT_PATH" -days 3650  -CAcreateserial -extfile <(printf "subjectAltName = DNS:$CERT_CN, DNS:$TAILSCALE_HOSTNAME, DNS:localhost\nauthorityKeyIdentifier = keyid,issuer\nbasicConstraints = CA:FALSE\nkeyUsage = digitalSignature, keyEncipherment\nextendedKeyUsage=serverAuth")
+
+# v0.0.2: Add tailscale hostname support for existing certificates
+elif ! openssl x509 -noout -text -in "${SSL_CERT_PATH}" | grep -Po 'DNS:\K[^,]+' | grep -Fxq -- "${TAILSCALE_HOSTNAME}"; then
+
+	openssl x509 -req -CA "$SSL_ROOT_CA_CERT_PATH" -CAkey "$SSL_ROOT_CA_KEY_PATH" -in "$SSL_CSR_PATH" -out "$SSL_CERT_PATH" -days 3650  -CAcreateserial -extfile <(printf "subjectAltName = DNS:$CERT_CN, DNS:$TAILSCALE_HOSTNAME, DNS:localhost\nauthorityKeyIdentifier = keyid,issuer\nbasicConstraints = CA:FALSE\nkeyUsage = digitalSignature, keyEncipherment\nextendedKeyUsage=serverAuth")
+
 fi
 chown 1000:0 "${SSL_CERT_PATH}"
 chown 1000:0 "${SSL_KEY_PATH}"
@@ -72,5 +77,5 @@ if [[ ! -f "${BACKUP_SERVER_INDEX_TS_PATH}" ]]; then
   sed -i 's|upgradeInsecureRequests: null|upgradeInsecureRequests: \[\]|' "${ORGINAL_SERVER_INDEX_TS_PATH}"
   
   # Allow the http version of the hostname in CSP 
-  sed -i "s|connectSrc: \[\"'self'\", 'https://apps.umbrel.com'\]|connectSrc: \['http://${CERT_CN}', \"'self'\", 'https://apps.umbrel.com'\]|" "${ORGINAL_SERVER_INDEX_TS_PATH}"
+  sed -i "s|connectSrc: \[\"'self'\", 'https://apps.umbrel.com'\]|connectSrc: \['http://${CERT_CN}', 'http://${TAILSCALE_HOSTNAME}', \"'self'\", 'https://apps.umbrel.com'\]|" "${ORGINAL_SERVER_INDEX_TS_PATH}"
 fi

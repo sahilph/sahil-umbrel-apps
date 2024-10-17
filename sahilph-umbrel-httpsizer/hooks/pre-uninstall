@@ -15,13 +15,13 @@ MYDIR="$(dirname "$(readlink -f "$0")")"
 # Only restore if any of the files are modified by this app
 if grep -q  "${MODDED_APP_PROXY_DOCKER_IMAGE}"  "${ORIGINAL_APP_PROXY_DOCKER_COMPOSE_PATH}" ||  grep -q  "${MODDED_APP_AUTH_DOCKER_IMAGE}" "${ORIGINAL_APP_AUTH_DOCKER_COMPOSE_PATH}" || grep -q "${MODDED_APP_PROXY_DOCKER_IMAGE}" "${ORIGINAL_APP_TS_PATH}" ; then
 	
-	cp -a "${BACKUPS_LEGACY_COMPAT_DIR}/*" "${DOCKER_COMPOSE_DIR}/"
+	cp -a "${BACKUPS_LEGACY_COMPAT_DIR}/." "${DOCKER_COMPOSE_DIR}/"
 	cp -a "${BACKUP_APP_TS_PATH}" "${ORIGINAL_APP_TS_PATH}"
 	cp -a "${BACKUP_SERVER_INDEX_TS_PATH}" "${ORGINAL_SERVER_INDEX_TS_PATH}"
 	
 fi  
 
 ## Delete the contents in the backup directory since we are uninstalling/updating
-rm "${BACKUPS_LEGACY_COMPAT_DIR}/*.yml"
+rm -rf "${BACKUPS_LEGACY_COMPAT_DIR}/*"
 rm "${BACKUP_APP_TS_PATH}"
 rm "${BACKUP_SERVER_INDEX_TS_PATH}"
