@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # Common Variables used for the scripts
-
+if [ ! -v UMBREL_ROOT ]; then
+  UMBREL_ROOT="/home/umbrel/umbrel"
+fi
 # SSL Related Variables
 SSL_DIR="${UMBREL_ROOT}/secrets/ssl"
 
